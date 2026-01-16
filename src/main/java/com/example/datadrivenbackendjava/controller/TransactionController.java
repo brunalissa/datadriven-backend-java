@@ -1,9 +1,10 @@
 package com.example.datadrivenbackendjava.controller;
 
 import com.example.datadrivenbackendjava.model.Transaction;
+import com.example.datadrivenbackendjava.model.TransactionType;
 import com.example.datadrivenbackendjava.service.TransactionService;
-import com.example.datadrivenbackendjava.annotation.*;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class TransactionController {
 
     private final TransactionService service;
 
-    public TransactionController{
+    public TransactionController (TransactionService service){
         this.service = service;
     }
 
@@ -28,8 +29,10 @@ public class TransactionController {
         return service.findAll();
     }
 
-    @GetMapping("/type/(type)")
+    @GetMapping("/type/{type}")
     public List<Transaction> findByType(@PathVariable String type) {
-        return servie.findByType(type);
+        return service.findByType(TransactionType.valueOf(type)).findAll();
     }
+
 }
+
