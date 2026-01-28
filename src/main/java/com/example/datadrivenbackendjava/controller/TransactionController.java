@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/transaction")
@@ -31,7 +32,7 @@ public class TransactionController {
 
     @GetMapping("/type/{type}")
     public List<Transaction> findByType(@PathVariable String type) {
-        return service.findByType(TransactionType.valueOf(type)).findAll();
+        return service.findByType(TransactionType.valueOf(type.toUpperCase(Locale.ROOT)));
     }
 
 }

@@ -23,7 +23,7 @@ public class TransactionService {
         return repository.findAll();
     }
 
-    public TransactionRepository findByType(TransactionType type) {
+    public List<Transaction> findByType(TransactionType type) {
         return repository.findByType(type);
     }
 }
