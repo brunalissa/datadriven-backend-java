@@ -183,7 +183,7 @@ curl -X POST http://localhost:8080/transactions \
 Retrieve all transactions
 curl http://localhost:8080/transactions
 
-## *## Recent Fixes*
+## *Recent Fixes*
 - Fixed application startup issues related to JPA configuration
 - Corrected entity mappings and repository definitions
 - Improved application stability during context initialization
