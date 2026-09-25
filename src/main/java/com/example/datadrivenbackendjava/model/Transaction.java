@@ -1,6 +1,9 @@
 package com.example.datadrivenbackendjava.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -13,12 +16,17 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
+    @NotBlank
     private String description;
+    @NotNull
+    @Positive
     private BigDecimal amount;
+    @NotBlank
     private String category;
 
     @Enumerated(EnumType.STRING)
 
+    @NotNull
     private TransactionType type;
     private LocalDateTime createdAt;
 
@@ -42,8 +50,12 @@ public class Transaction {
         return createdAt;
     }
 
-    public String Category(String category) {
+    public String getCategory() {
         return category;
+    }
+
+    public TransactionType getType() {
+        return type;
     }
 
     public void setDescription(String description) {
